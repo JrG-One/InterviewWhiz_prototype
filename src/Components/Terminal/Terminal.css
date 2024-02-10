@@ -1,0 +1,34 @@
+/* Terminal.css */
+
+.terminal-container {
+    border: 2px solid #38CC77;
+    padding: 15px;
+    border-radius: 8px;
+    /* overflow: hidden; */
+    margin: 20px;
+    height: 500px;
+  overflow-y: hidden;
+  }
+
+  .head{
+    font-size: 40px;
+  text-align: left;
+  color: #61dafb;
+  font-weight: 700;
+  margin-left: 25px;
+  }
+  /* Additional styling for cursor */
+  .rt-cursor {
+    cursor: text;
+    animation: blink 1s infinite; 
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  

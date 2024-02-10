@@ -1,0 +1,57 @@
+/* src/components/Navbar.css */
+.navbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 15px 20px;
+  background: #282c34;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #282c34; /* Dark background color */
+  padding: 10px;
+  padding-left: 30px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  width: 100%; /* Ensure the nav takes 100% of its parent's width */
+}
+
+.left {
+  display: flex;
+  align-items: center; /* Align items vertically in the left section */
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 20px;
+  color: #ffffff; /* Blue color for title */
+  cursor: pointer;
+  padding-top: 10px;
+}
+
+.right {
+  display: flex;
+  align-items: center; /* Align items vertically in the right section */
+  gap: 50px;
+  padding-top: 10px;
+}
+
+a, span {
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-right: 10px;
+  color: #ffffff; /* Light gray color for text */
+  font-weight: bold;
+  font-size: 20px;
+  text-decoration: none; /* Remove underline from links */
+}
+
+a:hover, span:hover {
+  background-color: #4b5263; /* Darker background color on hover */
+  color: #ffffff; /* White color on hover */
+  border-radius: 5px;
+}
