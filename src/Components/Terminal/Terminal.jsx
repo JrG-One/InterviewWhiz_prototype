@@ -93,7 +93,7 @@ const Terminal = () => {
     <TerminalContextProvider>
       <h4 className="head">______Terminal______</h4>
       <div className="terminal-container">
-        <ReactTerminal
+        <ReactTerminal  
           prompt="$ interviewwhiz >> "
           welcomeMessage={
             <div>
@@ -112,10 +112,6 @@ const Terminal = () => {
             },
           }}
           theme="darkDefault"
-          cursorStyle={{
-            display: 'text',
-            backgroundColor: '#38CC77',
-          }}
           commands={{
             ...Object.keys(terminalCommands).reduce(
               (b, key) => ({ ...b, [key]: terminalCommands[key].action }),
