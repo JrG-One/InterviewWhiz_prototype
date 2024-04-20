@@ -1,8 +1,8 @@
-// authController.js
-
-const UserModel = require('../models/user');
-
-exports.signup = async (req, res) => {
+const express = require('express');
+const router = express.Router();
+const UserModel = require('./user');
+router.use(express.json);
+router.post('/api/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
@@ -13,11 +13,7 @@ exports.signup = async (req, res) => {
     }
 
     // Create a new user instance
-    const newUser = new UserModel({
-      name,
-      email,
-      password
-    });
+    const newUser = new UserModel({ name, email, password });
 
     // Save the user to the database
     await newUser.save();
@@ -29,4 +25,6 @@ exports.signup = async (req, res) => {
     console.error('Error registering user:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
-};
+});
+
+module.exports = router;

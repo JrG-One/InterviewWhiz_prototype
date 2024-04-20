@@ -1,24 +1,26 @@
 const express = require('express');
-const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
-// const bcrypt = require("bcrypt");
+const mongoose = require('mongoose');
+const cors = require('cors'); // Import the CORS middleware
+const signupRouter = require('./authController'); // Import the router for signup
 
-const Data = require("./user");
-const config = require("./config");
+const config = require('./config');
 
 const app = express();
 const PORT = 8080;
 
-// app.use(cookieParser());
-// app.use(bodyParser.json());
-// app.use(express.static("public"));
-
 // Connect to MongoDB
-// config.js
-mongoose.connect(config.MONGODB_URI)
-    .then(() => console.log("MongoDB connected"))
-    .catch(err => console.log(err));
+mongoose
+  .connect(config.MONGODB_URI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.log(err));
 
-app.listen(PORT,()=>{
-    console.log("App is running on port "+PORT)
-})
+// Use CORS middleware to allow requests from all origins
+app.use(cors());
+
+// Define routes
+app.use('/', signupRouter); // Mount the signup router under the '/api' prefix
+
+// Start the server
+app.listen(PORT, () => {
+  console.log('App is running on port ' + PORT);
+});
