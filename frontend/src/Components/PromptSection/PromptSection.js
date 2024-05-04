@@ -29,7 +29,7 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
       }
     }, 30);
     return () => clearInterval(timer);
-  }, [introIndex, introduction]); // Run effect whenever introIndex or introduction changes
+  }, [introIndex, introduction, experience, role, targetCompany]);
 
   // Timer function to update time left every second
   useEffect(() => {

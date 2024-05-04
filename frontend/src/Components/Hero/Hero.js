@@ -30,7 +30,7 @@ const Hero = () => {
     return () => {
       // Cleanup if needed
     };
-  }, []); // Empty dependency array means the effect runs once after the initial render
+  }, [startTypingAnimation]); // Empty dependency array means the effect runs once after the initial render
 
   const handleGetStarted = () => {
     navigate('/interview-portal');
