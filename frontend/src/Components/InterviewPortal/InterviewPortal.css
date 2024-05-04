@@ -1,0 +1,110 @@
+/* InterviewPortal.css */
+
+.interview-portal {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 20px;
+  height: 100vh;
+  flex-direction: column;
+
+}
+
+.interview-heading {
+  font-size: 50px;
+  font-weight: bold; 
+  color: #282c34;
+  text-align: center;
+  margin-bottom: 20px;
+  
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+
+.left-section{
+  width: 48%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  justify-content: center;
+  margin-left: 580px;
+}
+
+.interview-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-self: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: #0e355e;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #729fcd;
+}
+
+.form-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-container h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #0e355e;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #0e355e;
+}
+
+.form-container input[type="text"],
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.form-container button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #0e355e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #729fcd;
+}
+
+.form-submitted {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

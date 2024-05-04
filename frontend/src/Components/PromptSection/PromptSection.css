@@ -1,0 +1,102 @@
+/* PromptSection.css */
+
+/* Container for the entire interview page */
+.interview-page {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styling for interviewer and student sections */
+.interviewer-section,
+.student-section {
+  flex: 1;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  background-color: #f9f9f9; /* Light background color */
+}
+
+/* Heading styles */
+.interviewer-section h2,
+.student-section h2 {
+  margin-top: 0;
+  color: #333; /* Dark text color */
+}
+
+/* Textarea for student's answer */
+.student-section textarea {
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; /* White background color */
+  font-size: 16px;
+  color: #333; /* Dark text color */
+  resize: vertical;
+}
+
+/* Submit button styles */
+.student-section button {
+  padding: 10px 20px;
+  background-color: #0066ff; /* Blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button hover effect */
+.student-section button:hover {
+  background-color: #0051cc; /* Darker blue on hover */
+}
+
+/* Paragraph styles */
+.interviewer-section p,
+.student-section p {
+  color: #666; /* Medium text color */
+}
+
+/* Heading styles for questions and feedback */
+.interviewer-section h3,
+.student-section h3 {
+  color: #444; /* Slightly darker text color */
+}
+
+/* Styling for introduction text */
+.interviewer-section p.intro-text {
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+/* Microphone emoji before intro text */
+.interviewer-section p.intro-text::before {
+  content: "🎙️ "; 
+}
+
+/* Styling for time left display */
+.student-section p.time-left {
+  font-weight: bold;
+}
+
+/* Styling for feedback section */
+.interviewer-section .feedback-section {
+  margin-top: 20px;
+}
+
+/* Feedback heading styles */
+.interviewer-section .feedback-section h3 {
+  margin-bottom: 10px;
+}
+
+/* Italic style for feedback text */
+.interviewer-section .feedback-section .feedback-text {
+  font-style: italic;
+}
+
+/* Pen emoji before feedback text */
+.interviewer-section .feedback-section .feedback-text::before {
+  content: "📝 "; 
+}
