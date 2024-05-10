@@ -26,7 +26,7 @@ root.render(
           path="/"
           element={
             <>
-              <Navbar />
+              <Navbar/>
               <Parallax
                 strength={500}
                 style={{
@@ -38,7 +38,7 @@ root.render(
                 <div>
                   <Hero />
                   <Features />
-                  <InterviewWhizTerminal />
+                  {/* <InterviewWhizTerminal /> */}
                   <FAQ />
                   <Footer className="fixed-footer" />
                 </div>

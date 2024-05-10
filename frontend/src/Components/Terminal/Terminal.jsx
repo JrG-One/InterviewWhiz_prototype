@@ -3,91 +3,83 @@ import { ReactTerminal, TerminalContextProvider } from "react-terminal";
 import "./Terminal.css";
 
 const Terminal = () => {
-  const terminalCommands = React.useMemo(() => {
-    return {
-      whoami: {
-        help: "Tells you who you are",
-        action: (
-          <div>
-            <p>Welcome to InterviewWhiz Terminal!</p>
-            <p>Type 'help' to see available commands.</p>
-          </div>
-        ),
-      },
-
-      interviewwhiz: {
-        help: "Learn more about InterviewWhiz",
-        action: (
-          <div>
-            <p>
-              InterviewWhiz is a comprehensive platform for honing your
-              interview skills.
-            </p>
-            <p>
-              Explore mock interviews, coding assessments, and more to excel in
-              technical assessments.
-            </p>
-            <p>
-              Visit our website:{" "}
-              <a href="https://www.interviewwhiz.com">InterviewWhiz</a>
-            </p>
-          </div>
-        ),
-      },
-
-      "schedule-interview": {
-        help: "Schedule a mock interview on InterviewWhiz",
-        action: (
-          <div>
-            <p>
-              You can schedule a mock interview on InterviewWhiz to practice and
-              improve your skills.
-            </p>
-            <p>
-              Visit our scheduling page:{" "}
-              <a href="https://www.interviewwhiz.com/schedule">
-                Schedule Interview
-              </a>
-            </p>
-          </div>
-        ),
-      },
-
-      "coding-assessment": {
-        help: "Access coding assessments on InterviewWhiz",
-        action: (
-          <div>
-            <p>
-              Explore coding assessments on InterviewWhiz to test and enhance
-              your coding abilities.
-            </p>
-            <p>
-              Visit our coding assessment page:{" "}
-              <a href="./coding-assessment">
-                Coding Assessment
-              </a>
-            </p>
-          </div>
-        ),
-      },
-
-      feedback: {
-        help: "Provide feedback on InterviewWhiz",
-        action: (
-          <div>
-            <p>
-              We appreciate your feedback! Feel free to share your thoughts and
-              suggestions with us.
-            </p>
-            <p>
-              Visit our feedback page:{" "}
-              <a href="https://www.interviewwhiz.com/feedback">Feedback</a>
-            </p>
-          </div>
-        ),
-      },
-    };
-  }, []);
+  const terminalCommands = {
+    whoami: {
+      help: "Tells you who you are",
+      action: (
+        <div>
+          <p>Welcome to InterviewWhiz Terminal!</p>
+          <p>Type 'help' to see available commands.</p>
+        </div>
+      ),
+    },
+    interviewwhiz: {
+      help: "Learn more about InterviewWhiz",
+      action: (
+        <div>
+          <p>
+            InterviewWhiz is a comprehensive platform for honing your interview
+            skills.
+          </p>
+          <p>
+            Explore mock interviews, coding assessments, and more to excel in
+            technical assessments.
+          </p>
+          <p>
+            Visit our website:{" "}
+            <a href="https://www.interviewwhiz.com">InterviewWhiz</a>
+          </p>
+        </div>
+      ),
+    },
+    "schedule-interview": {
+      help: "Schedule a mock interview on InterviewWhiz",
+      action: (
+        <div>
+          <p>
+            You can schedule a mock interview on InterviewWhiz to practice and
+            improve your skills.
+          </p>
+          <p>
+            Visit our scheduling page:{" "}
+            <a href="https://www.interviewwhiz.com/schedule">
+              Schedule Interview
+            </a>
+          </p>
+        </div>
+      ),
+    },
+    "coding-assessment": {
+      help: "Access coding assessments on InterviewWhiz",
+      action: (
+        <div>
+          <p>
+            Explore coding assessments on InterviewWhiz to test and enhance your
+            coding abilities.
+          </p>
+          <p>
+            Visit our coding assessment page:{" "}
+            <a href="./coding-assessment">Coding Assessment</a>
+          </p>
+        </div>
+      ),
+    },
+    feedback: {
+      help: "Provide feedback on InterviewWhiz",
+      action: (
+        <div>
+          <p>
+            We appreciate your feedback! Feel free to share your thoughts and
+            suggestions with us.
+          </p>
+          <p>
+            Visit our feedback page:{" "}
+            <a href="https://www.interviewwhiz.com/feedback">Feedback</a>
+          </p>
+        </div>
+      ),
+    },
+  };
 
   return (
     <TerminalContextProvider>
@@ -111,21 +103,23 @@ const Terminal = () => {
               themePromptColor: "#fff",
             },
           }}
-          theme="darkDefault"
+          theme="Default"
           commands={{
-            ...Object.keys(terminalCommands).reduce(
-              (b, key) => ({ ...b, [key]: terminalCommands[key].action }),
-              {}
-            ),
-            help: (
+            ...Object.entries(terminalCommands).reduce((commands, [key, { action, help }]) => {
+              return {
+                ...commands,
+                [key]: action,
+                [`${key}-help`]: (
+                  <div key={`${key}-help`}>
+                    <p>
+                      <span style={{ color: "#38CC77" }}>{key}:</span> {help}
+                    </p>
+                  </div>
+                ),
+              };
+            }, {}),
+            clear: (
               <div style={{ marginTop: "5px" }}>
-                <p>Available Commands:</p>
-                {Object.keys(terminalCommands).map((key) => (
-                  <p key={key}>
-                    <span style={{ color: "#38CC77" }}>{key}:</span>{" "}
-                    {terminalCommands[key].help}
-                  </p>
-                ))}
                 <p>
                   <span style={{ color: "#38CC77" }}>clear:</span> clears out
                   everything on screen!

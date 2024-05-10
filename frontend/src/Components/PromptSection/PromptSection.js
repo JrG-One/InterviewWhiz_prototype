@@ -8,7 +8,7 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
   const [feedback, setFeedback] = useState('');
   const [timeLeft, setTimeLeft] = useState(60); // Assuming 60 minutes for the interview
   const [introIndex, setIntroIndex] = useState(0); // Index to control the typewriter effect
-  const introduction = `Hello, ${name}. I'm your Personal Interviewer at Interview Whiz. Nice to meet you. 
+  const introduction = `Hello, ${name}. I'm your Personal Interviewer at InterviewWhiz. Nice to meet you. 
                         So, as I've seen, you have applied for ${role} position at ${targetCompany}.
                         Here is your 1st Question. You have to solve it within one hour`; // Introduction by the Interviewer
 
@@ -18,7 +18,7 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
         setIntroIndex(prevIndex => prevIndex + 1);
       } else {
         clearInterval(timer);
-        generateRandomQuestions(targetCompany, experience, role, false, "C++")
+        generateRandomQuestions(targetCompany, experience, role, true, "C++")
           .then(generatedQuestion => {
             setQuestion(generatedQuestion);
           })
@@ -42,16 +42,22 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
 
   const generateRandomQuestions = async (targetCompany, yearsOfExperience, jobRole, isCoding, preferredLanguage) => {
     try {
-      const systemContext = "You are a non AI interviewer who is conducting an interview for a candidate applying for a job role at a target company.";
+      const systemContext = `Please assume the role of an experienced Interviewer with over 20 years of experience in taking interviews for ${jobRole} positions in India. The interviewer has a friendly and encouraging style.`;
 
       let prompt = "";
-      if (isCoding) {
-        // Construct prompt based on user inputs
-        prompt = `You are a non AI interviewer [Important] Just Directly Generate a Coding question only in ${preferredLanguage} programming with proper test cases (without answer) for a candidate applying for a ${jobRole} position at ${targetCompany} with ${yearsOfExperience} years of experience. Provide test cases for coding questions. Provide response starting from question only`;
-      } else {
-        // Construct prompt based on user inputs
-        prompt = `You are a non AI interviewer [Important] Directly Generate a Theoretical question (without answer) for a candidate applying for a ${jobRole} position at ${targetCompany} with ${yearsOfExperience} years of experience.`;
+      if(isCoding)
+      {
+        prompt = `We are interviewing a candidate for a ${jobRole} position with ${yearsOfExperience} years of experience in ${preferredLanguage} programming. 
+        As the interviewer, what would be a good ${preferredLanguage} programming data structrues and alogorithm (DSA) based to ask them to assess their understanding of programming and data structrues and alogorithm (DSA)? 
+        **[Important] Provide ONLY the question, test cases, and constraints in ${preferredLanguage} for a coding problem to assess understanding of problem solving. No explanations or interview dialogue.**`;
       }
+      else 
+      {
+        // Construct prompt based on user inputs
+        prompt = `We are interviewing a candidate for a ${jobRole} position with ${yearsOfExperience} years of experience. 
+        As the interviewer, what would be a good theoritical question to ask them to assess their knowledge? 
+        ** [Important] Provide ONLY the question to assess understanding of candidate. No explanations or interview dialogue.**`;
+     }
 
       const apiUrl = "https://openaitestdeepak.openai.azure.com/openai/deployments/gpt-35-turbo/chat/completions?api-version=2024-02-15-preview";
 
@@ -94,10 +100,24 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
 
   const generateFeedback = async (question, solution) => {
     try {
-      const systemContext = "Assistant is an intelligent chatbot designed to act as an Interviewer who can analyze the solution of the question provided by the candidate and provide feedback to the candidate.";
+      const systemContext = "Please assume the role of an experienced Interviewer with over 20 years of experience in taking interviews for Software Engineer positions in India. The interviewer has a friendly and encouraging style.";
+      let prompt = "";
+        
+      const areasOfAnalysis = ["Correctness", "edge cases", "efficiency"]; // You can modify this list
 
-      const prompt = `[Behave like an actual non AI interviewer] You have asked this ${question} to the candidate and Candidate provided this ${solution}. Analyze the solution of the candidate and provide crisp feedback to the candidate for his/her solution.`;
-
+      prompt = `We are analyzing a candidate's solution to assess understanding of problem solving. The question is ${question}.
+      **Provided Code:**
+      ${solution}
+      **Analyze the provided code based on the following areas:**
+      * ${areasOfAnalysis.join("\n  * ")}
+      * **Correctness:** Does the code produce the expected output for the provided test cases? If not, identify discrepancies and suggest potential fixes.
+      * **Edge Cases:** Are there any scenarios the code might not handle correctly? Suggest potential edge cases and how the code could be improved to address them.
+      * **Efficiency:** Can the code be optimized for better performance (time or space complexity)? If so, suggest potential improvements.
+        
+      **Note:** 
+    - Focus on the core logic of the problem and solution approach.
+      **Directly provide feedback without any additioal message apart from feedback, directly addressing the candidate. Please be crisp and provide in consize way**
+      `;
       const apiUrl = "https://openaitestdeepak.openai.azure.com/openai/deployments/gpt-35-turbo/chat/completions?api-version=2024-02-15-preview";
 
       const requestBody = {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Hero.css';
 
@@ -9,7 +9,7 @@ const Hero = () => {
   const typingSpeed = 50; // Adjust the speed in milliseconds
   const restartInterval = 8000; // Restart interval in milliseconds
 
-  const startTypingAnimation = () => {
+  const startTypingAnimation = useCallback(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
       setTypedText(textToType.substring(0, index));
@@ -22,7 +22,7 @@ const Hero = () => {
         }, restartInterval);
       }
     }, typingSpeed);
-  };
+  }, [textToType, restartInterval, typingSpeed]);
 
   useEffect(() => {
     startTypingAnimation();
