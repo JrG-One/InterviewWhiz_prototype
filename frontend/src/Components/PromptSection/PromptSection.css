@@ -3,7 +3,9 @@
 /* Container for the entire interview page */
 .interview-page {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  background: linear-gradient(to right, #91dbf0, #383232);
 }
 
 /* Styling for interviewer and student sections */
@@ -12,51 +14,116 @@
   flex: 1;
   padding: 20px;
   border: 2px solid #ccc;
-  border-radius: 8px;
+  border-radius: 12px;
   margin: 10px;
   background-color: #f9f9f9; /* Light background color */
+  
+  height: 1000px;
 }
 
 /* Heading styles */
 .interviewer-section h2,
 .student-section h2 {
-  margin-top: 0;
   color: #333; /* Dark text color */
 }
 
+
+.ques{
+  height: 900px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.student-section{
+  display: flex;
+  flex-direction: column;
+  
+}
+.editor{
+  /* overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth; */
+  height: 700px;
+  width: 100%;
+}
 /* Textarea for student's answer */
 .student-section textarea {
-  width: 100%;
-  height: 400px;
+  /* width: 95%; */
+  height: 780px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #fff; /* White background color */
-  font-size: 16px;
-  color: #333; /* Dark text color */
+  background-color: #fff;
+  font-size: 25px;
+  color: #333;
   resize: vertical;
 }
 
 /* Submit button styles */
 .student-section button {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
-  background-color: #0066ff; /* Blue button color */
+  background-color: #282c34; /* Blue button color */
   color: #fff; /* White text color */
   border: none;
-  border-radius: 5px;
+  box-shadow: #0066ff;
+  height: 80px;
+  width:30%;
+  border-radius: 50px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.timer .end, .timer .next{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34; /* Blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  box-shadow: #0066ff;
+  height: 50px;
+  width:auto;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  /* margin-top: 125px; */
+}
+.timer .time{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34; /* Blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  box-shadow: #0066ff;
+  height: 33px;
+  width:auto;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 /* Button hover effect */
 .student-section button:hover {
-  background-color: #0051cc; /* Darker blue on hover */
+  background: linear-gradient(to right, #91dbf0, #383232);
 }
 
 /* Paragraph styles */
-.interviewer-section p,
-.student-section p {
+.interviewer-section p {
   color: #666; /* Medium text color */
+  font-size: 25px;
 }
 
 /* Heading styles for questions and feedback */
@@ -79,6 +146,7 @@
 /* Styling for time left display */
 .student-section p.time-left {
   font-weight: bold;
+  display: flex;
 }
 
 /* Styling for feedback section */
@@ -99,4 +167,44 @@
 /* Pen emoji before feedback text */
 .interviewer-section .feedback-section .feedback-text::before {
   content: "📝 "; 
+}
+.studtop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.timer{
+  display: flex;
+  flex-direction: row;
+  gap:5px;
+
+}
+
+.circumicon__timer{
+  vertical-align: middle;
+  /* font-weight: bolder; */
+}
+.sections{
+  display: flex;
+  flex-direction: row;
+}
+
+.feedback{
+  flex: 1;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  margin: 10px;
+  background-color: #f9f9f9; /* Light background color */
+}
+.feedback h2{
+  justify-content: center;
+  align-self: center;
+}
+.feedback p{
+  color: #666; /* Medium text color */
+  font-size: 25px;
+}
+.react-icons{
+  size:30px;
 }

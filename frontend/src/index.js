@@ -102,7 +102,7 @@ root.render(
           path="/prompt"
           element={
             <>
-              
+              <Navbar />
               <InterviewPage name="Ojaswa"
                 targetCompany="Microsoft"
                 experience={0}
