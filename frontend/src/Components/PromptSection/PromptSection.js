@@ -5,7 +5,8 @@ import { RiRobot3Fill } from "react-icons/ri";
 import { PiStudentFill } from "react-icons/pi";
 import { VscFeedback } from "react-icons/vsc";
 import Lottie from 'react-lottie'; // Import Lottie
-import loadingAnimation from '../../loadingAnimation.json'; // Import your loading animati
+import loadingAnimation from '../../loadingAnimation.json';
+import feedbackAnimation from '../../feedbackAnimation.json' // Import your loading animati
 import './PromptSection.css';
 
 const InterviewPage = ({ name, targetCompany, experience, role }) => {
@@ -110,17 +111,20 @@ useEffect(() => {
   };
 
   const handleSubmit = async () => {
-    const ele=document.getElementById('sub');
+    const ele = document.getElementById('sub');
     ele.style.background = "linear-gradient(to right, #91dbf0, #383232)";
     if (feedbackSectionRef.current) {
       feedbackSectionRef.current.scrollIntoView({ behavior: 'smooth' });
-  }
+    }
     try {
+      setIsLoading(true); // Set isLoading to true when the submission starts
       const feedback = await generateFeedback(question, answer);
       setFeedback(feedback);
     } catch (error) {
       console.error('Error generating feedback:', error);
       setFeedback('Error generating feedback. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
   const handleNextButton =async () => {
@@ -237,9 +241,20 @@ useEffect(() => {
         </div>
       </div>
       <div className='feedback' ref={feedbackSectionRef}>
-        <h2><VscFeedback style={{ fontSize: '60px' , verticalAlign:'middle'}}/> AI Feedback</h2>
-        <hr/>
-        <p>{feedback}</p>
+        <h2><VscFeedback style={{ fontSize: '60px', verticalAlign: 'middle' }} /> AI Feedback</h2>
+        <hr />
+        {isLoading && (
+          <div className='loading'>
+            <Lottie
+              options={{
+                animationData: feedbackAnimation,
+              }}
+              height={200}
+              width={200}
+            />
+          </div>
+        )}
+        {!isLoading && feedback && <p>{feedback}</p>}
       </div>
     </div>
   );
