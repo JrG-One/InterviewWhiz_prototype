@@ -4,6 +4,8 @@ import CircumIcon from "@klarr-agency/circum-icons-react"; // React
 import { RiRobot3Fill } from "react-icons/ri";
 import { PiStudentFill } from "react-icons/pi";
 import { VscFeedback } from "react-icons/vsc";
+import Lottie from 'react-lottie'; // Import Lottie
+import loadingAnimation from '../../loadingAnimation.json'; // Import your loading animati
 import './PromptSection.css';
 
 const InterviewPage = ({ name, targetCompany, experience, role }) => {
@@ -14,6 +16,7 @@ const InterviewPage = ({ name, targetCompany, experience, role }) => {
   const [timeLeft, setTimeLeft] = useState(60 * 60); // Assuming 60 minutes for the interview
   const [introIndex, setIntroIndex] = useState(0); // Index to control the typewriter effect
   const [showintro, setshowintro] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const introduction = `Hello, ${name}. I'm your Personal Interviewer at InterviewWhiz. Nice to meet you. 
                         So, as I've seen, you have applied for ${role} position at ${targetCompany}.
                         let's begin your interview. Good luck!`;
@@ -32,6 +35,7 @@ useEffect(() => {
       clearInterval(timer);
       setTimeout(() => {
         setshowintro(false);
+        setIsLoading(false);
         generateRandomQuestions(targetCompany, experience, role, true, "C++")
           .then(generatedQuestion => {
             setQuestion(generatedQuestion);
@@ -40,9 +44,9 @@ useEffect(() => {
             console.error('Error generating question:', error);
             setQuestion('Error generating question. Please try again.');
           });
-      }, 3000); // Wait for 3 seconds before showing the question
+      }, 100);
     }
-  }, 30);
+  },30);
   return () => clearInterval(timer);
 }, [introIndex, introduction, experience, role, targetCompany]);
 
@@ -119,7 +123,13 @@ useEffect(() => {
       setFeedback('Error generating feedback. Please try again.');
     }
   };
-
+  const handleNextButton =async () => {
+        setQuestion(''); 
+        generateRandomQuestions(targetCompany, experience, role, true, "C++")
+          .then(generatedQuestion => {
+            setQuestion(generatedQuestion);
+          })
+  }
   const generateFeedback = async (question, solution) => {
     try {
       const systemContext = "Please assume the role of an experienced Interviewer with over 20 years of experience in taking interviews for Software Engineer positions in India. The interviewer has a friendly and encouraging style.";
@@ -178,17 +188,27 @@ useEffect(() => {
         <div className="interviewer-section">
         <h2><RiRobot3Fill style={{ fontSize: '60px' , verticalAlign:'middle'}}/> Interviewer</h2>
         <hr/>
-        {showintro &&
+        {!question && !showintro &&(
+          <div className='loading'>
+            <Lottie
+              options={{
+                animationData: loadingAnimation,
+              }}
+              height={800}
+              width={500}
+            />
+          </div>
+        )}
+        {showintro && (
           <div className='intro'>
             <p>{introduction.slice(0, introIndex)}</p>
           </div>
-        }
-        {!showintro &&
-        <div className='ques'>
-          {/* <h3>Question:</h3> */}
-          <p>{question}</p>
+        )}
+        {!showintro && question && (
+          <div className='ques'>
+            <p>{question}</p>
           </div>
-        }
+        )}
         </div>
         <div className="student-section">
           <div className='studtop'>
@@ -197,8 +217,8 @@ useEffect(() => {
             </div>
             <div className='timer'>
               <p className='time'><CircumIcon name="timer" size="2rem"/> Time Left: {formatTime(timeLeft)}</p>
-              <button className='next'>Next Question</button>
-              <button className='end'>End Interview</button>
+              <button id = 'next' className='next' onClick={handleNextButton}>Next Question</button>
+              <button id = 'end' className='end'>End Interview</button>
               
             </div>
           </div>
