@@ -7,7 +7,6 @@ const router = express.Router();
 
 // Signup Route
 router.post('/signup', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   try {
     const { name, email, password } = req.body;
 
@@ -32,7 +31,6 @@ router.post('/signup', async (req, res) => {
 
 // Login Route
 router.post('/login', async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
   try {
     const { email, password } = req.body;
 
