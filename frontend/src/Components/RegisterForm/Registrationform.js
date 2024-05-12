@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Components from './Component';
+import { useAuth } from '../../authContext';
 import axios from 'axios';
 
 const SignupComponent = ({ signIn }) => {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   // Function to toggle between sign-in and sign-up parts
   const toggleSign = () => {
@@ -29,7 +31,6 @@ const SignupComponent = ({ signIn }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/signup', formData);
       console.log('User signed up successfully:', response.data);
-      // Optionally, you can redirect the user to the login page after successful signup
       navigate('/login');
     } catch (error) {
       if (error.response && error.response.status === 400 && error.response.data.message === 'User already exists') {
@@ -45,7 +46,8 @@ const SignupComponent = ({ signIn }) => {
     try {
       const response = await axios.post('http://localhost:5000/api/login', formData);
       console.log('User logged in successfully:', response.data);
-      // Optionally, you can redirect the user to another page after successful login
+      login();
+      navigate('/') 
     } catch (error) {
       if (error.response && error.response.status === 404 && error.response.data.message === 'User not found') {
         alert('Email not found. Please sign up first.');
