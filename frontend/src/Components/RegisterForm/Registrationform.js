@@ -25,22 +25,46 @@ const SignupComponent = ({ signIn }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSignUp = async (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    
+  const handleSignUp = async () => {
     try {
-      console.log(formData);
-      const response = axios.post('http://localhost:8080/api/signup', formData);
-      console.log(formData);
-      // Handle success (e.g., display a success message)
+      const response = await axios.post('http://localhost:5000/api/signup', formData);
       console.log('User signed up successfully:', response.data);
+      // Optionally, you can redirect the user to the login page after successful signup
+      navigate('/login');
     } catch (error) {
-      // Handle error (e.g., display an error message)
-      console.error('Error signing up:', error);
+      if (error.response && error.response.status === 400 && error.response.data.message === 'User already exists') {
+        alert('Email already exists. Please use a different email.');
+        
+      } else {
+        console.error('Error signing up:', error);
+      }
+    }
+  };  
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/api/login', formData);
+      console.log('User logged in successfully:', response.data);
+      // Optionally, you can redirect the user to another page after successful login
+    } catch (error) {
+      if (error.response && error.response.status === 404 && error.response.data.message === 'User not found') {
+        alert('Email not found. Please sign up first.');
+        toggleSign(SignupComponent);
+      } else {
+        console.error('Error logging in:', error);
+
+      }
     }
   };
-  
-  
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (signIn) {
+      handleLogin();
+    } else {
+      handleSignUp();
+    }
+  };  
 
   return (
     <div>
@@ -48,20 +72,20 @@ const SignupComponent = ({ signIn }) => {
         <Components.SignInContainer signinIn={signIn}>
           <Components.Form>
             <Components.Title>Sign in</Components.Title>
-            <Components.Input type='email' placeholder='Email' />
-            <Components.Input type='password' placeholder='Password' />
+            <Components.Input type='email' placeholder='Email' name="email" onChange={handleInputChange} />
+            <Components.Input type='password' placeholder='Password' name="password" onChange={handleInputChange} />
             <Components.Anchor href='#'>Forgot your password?</Components.Anchor>
-            <Components.Button >Sign In</Components.Button>
+            <Components.Button onClick={handleFormSubmit}>Sign In</Components.Button>
           </Components.Form>
         </Components.SignInContainer>
       ) : (
         <Components.SignUpContainer signinIn={signIn}>
-          <Components.Form >
+          <Components.Form>
             <Components.Title>Create Account</Components.Title>
-            <Components.Input type='text' name='name' placeholder='Name' onChange={handleInputChange} />
-            <Components.Input type='email' name='email' placeholder='Email' onChange={handleInputChange} />
-            <Components.Input type='password' name='password' placeholder='Password' onChange={handleInputChange} />
-            <Components.Button onClick={(event) => handleSignUp(event)} >Sign Up</Components.Button>
+            <Components.Input type='text' placeholder='Name' name="name" onChange={handleInputChange} />
+            <Components.Input type='email' placeholder='Email' name="email" onChange={handleInputChange} />
+            <Components.Input type='password' placeholder='Password' name="password" onChange={handleInputChange} />
+            <Components.Button onClick={handleFormSubmit}>Sign Up</Components.Button>
           </Components.Form>
         </Components.SignUpContainer>
       )}

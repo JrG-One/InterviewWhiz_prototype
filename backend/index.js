@@ -1,26 +1,22 @@
+// server.js or index.js
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors'); // Import the CORS middleware
-const signupRouter = require('./authController'); // Import the router for signup
-
-const config = require('./config');
+const bodyParser = require('body-parser'); // If you're using body-parser middleware
+const cors = require('cors'); // Import CORS middleware
+const connectDB = require('./db');
+const authRoutes = require('./authRoutes'); // Import your auth routes
 
 const app = express();
-const PORT = 8080;
 
-// Connect to MongoDB
-mongoose
-  .connect(config.MONGODB_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+// Middleware
+app.use(cors()); // Use CORS middleware to allow requests from all origins
+app.use(bodyParser.json()); // Use body-parser middleware if needed
+app.use('/api', authRoutes); // Mount the auth routes under the /api path
 
-// Use CORS middleware to allow requests from all origins
-app.use(cors());
-
-// Define routes
-app.use('/', signupRouter); // Mount the signup router under the '/api' prefix
+// Connect to MongoDB Atlas
+connectDB();
 
 // Start the server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log('App is running on port ' + PORT);
+  console.log(`Server is running on port ${PORT}`);
 });
