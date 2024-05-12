@@ -29,7 +29,7 @@ const SignupComponent = ({ signIn }) => {
 
   const handleSignUp = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/signup', formData);
+      const response = await axios.post('https://interview-whiz-backend.vercel.app/api/signup', formData);
       console.log('User signed up successfully:', response.data);
       navigate('/login');
     } catch (error) {
@@ -44,7 +44,7 @@ const SignupComponent = ({ signIn }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/login', formData);
+      const response = await axios.post('https://interview-whiz-backend.vercel.app/api/login', formData);
       console.log('User logged in successfully:', response.data);
       login();
       navigate('/') 
