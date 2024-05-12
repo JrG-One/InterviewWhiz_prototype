@@ -4,33 +4,52 @@ import './AboutUs.css';
 const AboutUs = () => {
   return (
     <div className="about-us">
-      <div className="features-section">
-        <div className="features-container">
-          <div className="feature-group">
-            <h3>Features</h3>
-            <p>Explore the amazing features of our website.</p>
-          </div>
-          <div className="feature-row">
-            <div className="feature-card">
-              <h4>Feature 1</h4>
-              <p>Description of feature 1.</p>
-            </div>
-            <div className="feature-card">
-              <h4>Feature 2</h4>
-              <p>Description of feature 2.</p>
-            </div>
-            {/* Add more feature cards here */}
-          </div>
-        </div>
+      <div className="section-intro">
+        <h1>Empowering Your Tech Career Journeys (Replace with your website title)</h1>
+        <p>
+          (Replace this with a concise description of your website and value
+          proposition. Highlight what makes your platform unique and the benefits
+          users can expect.)
+        </p>
       </div>
-      <div className="usage">
-        <h3 className="section-title">How to Use</h3>
-        <ol className="steps">
-          <li className="step">Step 1: Lorem ipsum dolor sit amet.</li>
-          <li className="step">Step 2: Consectetur adipiscing elit.</li>
-          <li className="step">Step 3: Sed do eiusmod tempor incididunt.</li>
-          {/* Add more steps here */}
-        </ol>
+
+      {/* (Optional) Team Introduction */}
+      <div className="team-introduction">
+        <h3>Meet Our Experts (Optional - Replace with appropriate heading)</h3>
+        <p>
+          (Optional - Describe your team's expertise and how they can help
+          users. Consider including brief bios or descriptions for key team
+          members.)
+        </p>
+        <ul className="team-members">
+          {/* Add list items for team members here (optional) */}
+        </ul>
+      </div>
+
+      {/* User Stories */}
+      <div className="user-stories">
+        <h3>Success Stories (Replace with appropriate heading)</h3>
+        <div className="story">
+          <p>
+            "Since using (your platform's name), I've landed my dream job at a
+            top tech company. The AI feedback and personalized coaching were
+            invaluable!" (Replace with a user testimonial)
+          </p>
+          <p className="story-author">-(Name of the user)</p>
+        </div>
+        {/* Add more user stories here */}
+      </div>
+
+      {/* Call to Action */}
+      <div className="call-to-action">
+        <a href="#" className="cta-button">
+          Unlock Your Interview Potential Today! (Replace with clear call to action)
+        </a>
+        <p>
+          (Optional - Add a brief description to further incentivize users to
+          take the action, e.g., "Sign up for a free trial and experience the
+          difference.")
+        </p>
       </div>
     </div>
   );

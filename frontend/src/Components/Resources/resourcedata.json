@@ -1,0 +1,29 @@
+[
+    {
+      "companyName": "Google",
+      "questions": [
+        {
+          "question": "100 Interview Questions for Freshers",
+          "downloadLink": "#"
+        },
+        {
+          "question": "Another set of questions for Freshers",
+          "downloadLink": "#"
+        },
+        {
+          "question": "Yet another set of questions for Freshers",
+          "downloadLink": "#"
+        }
+      ]
+    },
+    {
+      "companyName": "Company 2",
+      "questions": [
+        {
+          "question": "100 Interview Questions for 1 Year Experienced",
+          "downloadLink": "#"
+        }
+      ]
+    }
+  ]
+  

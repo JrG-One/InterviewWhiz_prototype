@@ -5,13 +5,15 @@ import './InterviewPortal.css';
 const InterviewPortal = () => {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
+  
   const [userData, setUserData] = useState({
     name: '',
     company: '',
     role: '',
-    experience: '',
+    experience: '', 
     language: '',
   });
+
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleNextStep = () => {
@@ -25,15 +27,23 @@ const InterviewPortal = () => {
       [name]: value,
     }));
   };
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    setUserData({
+      name: userData.name,
+      company: userData.company,
+      role: userData.role,
+      experience: userData.experience,
+      language: userData.language,
+    });
+    localStorage.setItem('userData', JSON.stringify(userData));  
     console.log('User data:', userData);
     setFormSubmitted(true);
-  };
+    setTimeout(() => {
 
-  const handleStart = () => {
-    navigate('/prompt');
+      navigate('/prompt');
+    }, 5000);
   };
 
   return (
@@ -44,10 +54,7 @@ const InterviewPortal = () => {
       <div className={formSubmitted ? "prompt-section" : "left-section"}>
         {formSubmitted ? (
           <div className="form-submitted">
-            <h1 className="interview-heading">Just a click away from the magic...</h1>
-            <div className="interview-buttons">
-              <button className="start-interview">Start Interview</button>
-            </div>
+            <h1 className="interview-heading">Wait for the magic...</h1>
           </div>
         ) : (
           <div className="form-container">
@@ -91,7 +98,7 @@ const InterviewPortal = () => {
                   <label>Experience:</label>
                   <input
                     type="text"
-                    name="Experience"
+                    name="experience"
                     value={userData.experience}
                     onChange={handleChange}
                   />
@@ -102,7 +109,7 @@ const InterviewPortal = () => {
                   <label>Preferred Language:</label>
                   <input
                     type="text"
-                    name="Language"
+                    name="language"
                     value={userData.language}
                     onChange={handleChange}
                   />
@@ -111,7 +118,7 @@ const InterviewPortal = () => {
               {step !== 5 && (
                 <button type="button" onClick={handleNextStep}>Next</button>
               )}
-              {step === 5 && <button type="submit" onClick={handleStart}>Submit</button>}
+              {step === 5 && <button type="submit">Submit</button>}
             </form>
           </div>
         )}

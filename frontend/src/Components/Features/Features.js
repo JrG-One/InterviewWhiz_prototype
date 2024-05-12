@@ -14,22 +14,34 @@ const Features = () => {
         </div>
         <div className="feature-row">
           <div className="feature-card">
-            <h4>Feature 1</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h4>Mock Interviews Anytime, Anywhere</h4>
+            <p>
+              Schedule or start a mock interview session at your convenience,
+              regardless of location or time.
+            </p>
           </div>
           <div className="feature-card">
-            <h4>Feature 2</h4>
-            <p>Nullam vehicula metus eu nulla rhoncus, ac consectetur mauris consectetur.</p>
+            <h4>Download Resources</h4>
+            <p>
+              Access and download valuable resources like common tech
+              interview questions and answer templates.
+            </p>
           </div>
         </div>
         <div className="feature-row">
           <div className="feature-card">
-            <h4>Feature 3</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h4>AI-Generated Feedback</h4>
+            <p>
+              Receive real-time and comprehensive feedback on your interview
+              performance driven by AI analysis.
+            </p>
           </div>
           <div className="feature-card">
-            <h4>Feature 4</h4>
-            <p>Nullam vehicula metus eu nulla rhoncus, ac consectetur mauris consectetur.</p>
+            <h4>Full Analysis Report</h4>
+            <p>
+              Get a detailed report after each interview, summarizing your
+              strengths, weaknesses, and areas for improvement.
+            </p>
           </div>
         </div>
       </div>

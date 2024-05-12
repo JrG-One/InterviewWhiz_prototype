@@ -4,87 +4,89 @@ import "./Terminal.css";
 
 const Terminal = () => {
   const terminalCommands = {
-    whoami: {
-      help: "Tells you who you are",
-      action: (
-        <div>
-          <p>Welcome to InterviewWhiz Terminal!</p>
-          <p>Type 'help' to see available commands.</p>
-        </div>
-      ),
-    },
-    interviewwhiz: {
-      help: "Learn more about InterviewWhiz",
-      action: (
-        <div>
-          <p>
-            InterviewWhiz is a comprehensive platform for honing your interview
-            skills.
-          </p>
-          <p>
-            Explore mock interviews, coding assessments, and more to excel in
-            technical assessments.
-          </p>
-          <p>
-            Visit our website:{" "}
-            <a href="https://www.interviewwhiz.com">InterviewWhiz</a>
-          </p>
-        </div>
-      ),
-    },
-    "schedule-interview": {
-      help: "Schedule a mock interview on InterviewWhiz",
-      action: (
-        <div>
-          <p>
-            You can schedule a mock interview on InterviewWhiz to practice and
-            improve your skills.
-          </p>
-          <p>
-            Visit our scheduling page:{" "}
-            <a href="https://www.interviewwhiz.com/schedule">
-              Schedule Interview
-            </a>
-          </p>
-        </div>
-      ),
-    },
-    "coding-assessment": {
-      help: "Access coding assessments on InterviewWhiz",
-      action: (
-        <div>
-          <p>
-            Explore coding assessments on InterviewWhiz to test and enhance your
-            coding abilities.
-          </p>
-          <p>
-            Visit our coding assessment page:{" "}
-            <a href="./coding-assessment">Coding Assessment</a>
-          </p>
-        </div>
-      ),
-    },
-    feedback: {
-      help: "Provide feedback on InterviewWhiz",
-      action: (
-        <div>
-          <p>
-            We appreciate your feedback! Feel free to share your thoughts and
-            suggestions with us.
-          </p>
-          <p>
-            Visit our feedback page:{" "}
-            <a href="https://www.interviewwhiz.com/feedback">Feedback</a>
-          </p>
-        </div>
-      ),
-    },
+    whoami: () => (
+      <div>
+        <p>Welcome to InterviewWhiz Terminal!</p>
+        <p>Type 'help' to see available commands.</p>
+      </div>
+    ),
+    interviewwhiz: () => (
+      <div>
+        <p>
+          InterviewWhiz is a comprehensive platform for honing your interview
+          skills.
+        </p>
+        <p>
+          Explore mock interviews, coding assessments, and more to excel in
+          technical assessments.
+        </p>
+        <p>
+          Visit our website:{" "}
+          <a href="/aboutus">InterviewWhiz</a>
+        </p>
+      </div>
+    ),
+    "schedule-interview": () => (
+      <div>
+        <p>
+          You can schedule a mock interview on InterviewWhiz to practice and
+          improve your skills.
+        </p>
+        <p>
+          Visit our scheduling page:{" "}
+          <a href="interview-portal">
+            Schedule Interview
+          </a>
+        </p>
+      </div>
+    ),
+    "coding-assessment": () => (
+      <div>
+        <p>
+          Explore coding assessments on InterviewWhiz to test and enhance your
+          coding abilities.
+        </p>
+        <p>
+          Visit our coding assessment page:{" "}
+          <a href="/resource">Coding Assessment</a>
+        </p>
+      </div>
+    ),
+    feedback: () => (
+      <div>
+        <p>
+          We appreciate your feedback! Feel free to share your thoughts and
+          suggestions with us.
+        </p>
+        <p>
+          Visit our feedback page:{" "}
+          <a href="#">Feedback</a>
+        </p>
+      </div>
+    ),
+    help: () => (
+      <div>
+        <p>
+          Available commands:
+        </p>
+        <ul>
+          <li>whoami</li>
+          <li>interviewwhiz</li>
+          <li>schedule-interview</li>
+          <li>coding-assessment</li>
+          <li>feedback </li>
+          <li>help - Displays this help message</li>
+          <li>clear - Clears the screen</li>
+        </ul>
+      </div>
+    ),
+    clear: () => null,
   };
 
   return (
     <TerminalContextProvider>
       <h4 className="head">______Terminal______</h4>
-      <div className="terminal-container">
+      <div className="terminal-container" style={{ overflow: "hidden" }}>
         <ReactTerminal  
           prompt="$ interviewwhiz >> "
           welcomeMessage={
@@ -96,37 +98,17 @@ const Terminal = () => {
             </div>
           }
           themes={{
-            darkDefault: {
-              themeBGColor: "",
-              themeToolbarColor: "",
-              themeColor: "#38CC77",
-              themePromptColor: "#fff",
+            codingStudent: {
+              themeBGColor: "#1E1E1E", // Dark background color
+              themeToolbarColor: "#333", // Dark toolbar color
+              themeColor: "#D4D4D4", // Light text color
+              themePromptColor: "#38CC77", // Bright prompt color
+              themeFontFamily: "Courier New, monospace", // Retro font
             },
           }}
-          theme="Default"
-          commands={{
-            ...Object.entries(terminalCommands).reduce((commands, [key, { action, help }]) => {
-              return {
-                ...commands,
-                [key]: action,
-                [`${key}-help`]: (
-                  <div key={`${key}-help`}>
-                    <p>
-                      <span style={{ color: "#38CC77" }}>{key}:</span> {help}
-                    </p>
-                  </div>
-                ),
-              };
-            }, {}),
-            clear: (
-              <div style={{ marginTop: "5px" }}>
-                <p>
-                  <span style={{ color: "#38CC77" }}>clear:</span> clears out
-                  everything on screen!
-                </p>
-              </div>
-            ),
-          }}
+          theme="codingStudent" // Apply the custom theme
+          commands={terminalCommands}
+          style={{ overflow: "hidden" }}
         />
       </div>
     </TerminalContextProvider>
