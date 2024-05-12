@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://interview-whiz.vercel.app',
+  origin: '*', // Allow requests from any origin
   methods: ['GET', 'POST', 'DELETE'], // Add other methods if needed
   allowedHeaders: ['Content-Type', 'Authorization'], // Add other headers if needed
 }));
