@@ -20,7 +20,7 @@ const InterviewPage = ({
 }) => {
   const navigate = useNavigate();
   const [finalPDFData, setFinalPDFData] = useState([]);
-  const[forPDFFeedback, setforFeedback] = useState('');
+  // const[forPDFFeedback, setforFeedback] = useState('');
   const feedbackSectionRef = useRef(null);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -66,7 +66,7 @@ const InterviewPage = ({
               console.error("Error generating question:", error);
               setQuestion("Error generating question. Please try again.");
             });
-        }, 3000);
+        }, 1500);
       }
     }, 30);
     return () => clearInterval(timer);
@@ -134,7 +134,7 @@ const InterviewPage = ({
         .toString()
         .split("\n")
         .map((line, index) => <p key={index}>{line}</p>);
-      setFinalPDFData((prevData) => [...prevData, ...forPDFQuestion]); // Append to finalPDFData
+      setFinalPDFData((prevData) => [...prevData, " ", " ", ...forPDFQuestion]); // Append to finalPDFData
 
       return formattedquestion;
     } catch (error) {
@@ -152,17 +152,6 @@ const InterviewPage = ({
     try {
       setIsLoading(true); // Set isLoading to true when the submission starts
       const feedback = await generateFeedback(question, answer);
-      const formattedAnswer = answer.split("\n").map((line) => String(line)); // Split answer by newline and convert each line to a string
-      setFinalPDFData((prevData) => [
-        ...prevData,
-        " ",
-        "Answer: ",
-        " ",
-        ...formattedAnswer,
-      ]); // Append "Answer:" before formatted answer
-      
-      setFinalPDFData((prevData) => [...prevData, " ", " ", "Feedback : ", " ", " ", ...forPDFFeedback]);
-      console.log("Feebcaj"+forPDFFeedback);
       setFeedback(feedback);
     } catch (error) {
       console.error("Error generating feedback:", error);
@@ -190,18 +179,31 @@ const InterviewPage = ({
     // Initialize variables for positioning text
     let xPos = 10;
     let yPos = 10;
-    const lineHeight = 3;
+    const lineHeight = 7;
+    const pageHeight = doc.internal.pageSize.height;
+    doc.setFont('Times New Roman');
+    doc.setFontSize(20);
+    doc.text("Detailed Analyzed Feedback Report", 60, yPos);
+    doc.setFontSize(14);
     // Loop through each line of content
     finalPDFData.forEach((line) => {
-      const words = doc.splitTextToSize(line, maxWidth); // Split line into array of words that fit within maxWidth
-      const lines = doc.splitTextToSize(words.join(" "), maxWidth); // Join words into a single string and split into lines
+        const words = doc.splitTextToSize(line, maxWidth); // Split line into array of words that fit within maxWidth
+        const lines = doc.splitTextToSize(words.join(" "), maxWidth); // Join words into a single string and split into lines
 
-      // Loop through each line and add to PDF
-      lines.forEach((textLine) => {
-        doc.text(textLine, xPos, yPos); // Write the text to the PDF
-        yPos += 5; // Increment yPos for next line
-        yPos += lineHeight; // Increment yPos by line height for next line
-      });
+        // Check if adding these lines exceeds the remaining space on the current page
+        const spaceLeft = pageHeight - yPos;
+        const requiredSpace = lines.length * lineHeight;
+        if (requiredSpace > spaceLeft) {
+            // Add new page if there's not enough space for these lines
+            doc.addPage();
+            yPos = 10; // Reset yPos for new page
+        }
+
+        // Loop through each line and add to PDF
+        lines.forEach((textLine) => {
+            doc.text(textLine, xPos, yPos); // Write the text to the PDF
+            yPos += lineHeight; // Increment yPos by line height for next line
+        });
     });
 
     // Get current year and month
@@ -214,7 +216,8 @@ const InterviewPage = ({
 
     // Save the PDF with the constructed filename
     doc.save(filename);
-  };
+};
+
   
   const handleEndButton = async () => {
     generatePDF();
@@ -261,15 +264,29 @@ const InterviewPage = ({
       };
       const response = await axios.post(apiUrl, requestBody, { headers });
       const responseData = response.data;
-
+      const formattedAnswer = solution.split("\n").map((line) => String(line)); // Split answer by newline and convert each line to a string
+      setFinalPDFData((prevData) => [
+        ...prevData,
+        " ",
+        "Answer: ",
+        " ",
+        ...formattedAnswer,
+      ]); // Append "Answer:" before formatted answer
       const analyzeResponse = responseData.choices[0].message.content;
-      const check = analyzeResponse
-      .toString()
-      .split("\n")
-      .map((line, index) =>
-        String(line) // Explicitly convert line to a string
-      );
-      setforFeedback(check);
+      const forPDFFeedback = analyzeResponse
+        .toString()
+        .split("\n")
+        .map((line, index) =>
+          String(line) // Explicitly convert line to a string
+        );
+      // const check = analyzeResponse
+      // .toString()
+      // .split("\n")
+      // .map((line, index) =>
+      //   String(line) // Explicitly convert line to a string
+      // );
+      // setforFeedback(check);
+      setFinalPDFData((prevData) => [...prevData, " ", "Feedback : ", " ", ...forPDFFeedback]);
       const formattedfeedback = analyzeResponse
         .toString()
         .split("\n")

@@ -208,3 +208,7 @@
 .react-icons{
   size:30px;
 }
+
+.editor textarea{
+  font-family: 'Times New Roman', Times, serif;
+}
