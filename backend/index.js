@@ -8,7 +8,11 @@ const authRoutes = require('./authRoutes'); // Import your auth routes
 const app = express();
 
 // Middleware
-app.use(cors()); // Use CORS middleware to allow requests from all origins
+app.use(cors({
+  origin: 'https://interview-whiz.vercel.app',
+  methods: ['GET', 'POST', 'DELETE'], // Add other methods if needed
+  allowedHeaders: ['Content-Type', 'Authorization'], // Add other headers if needed
+}));
 app.use(bodyParser.json()); // Use body-parser middleware if needed
 app.use('/api', authRoutes); // Mount the auth routes under the /api path
 
