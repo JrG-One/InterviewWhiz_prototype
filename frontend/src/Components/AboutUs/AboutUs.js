@@ -9,6 +9,9 @@ const AboutUs = () => {
         <p>
           InterviewWhiz is your go-to platform for mastering technical interviews and advancing your tech career. Our AI-driven tools provide personalized feedback and resources to help you succeed.
         </p>
+        <p>
+          At InterviewWhiz, we understand that technical interviews can be daunting. That's why we've created a platform designed to empower candidates with the skills and confidence needed to excel in these challenging assessments. Our comprehensive suite of AI-driven tools offers personalized feedback, targeted resources, and expert guidance to help individuals navigate every stage of the interview process with ease. Whether you're a seasoned professional looking to brush up on your skills or a newcomer to the tech industry seeking to break into the field, InterviewWhiz is your trusted partner on the journey to success.
+        </p>
       </div>
 
       <div className="team-introduction">
@@ -16,7 +19,10 @@ const AboutUs = () => {
         <p>
           Our team consists of experienced professionals dedicated to helping you excel in interviews. With backgrounds in software engineering, data science, and more, we're here to support your journey.
         </p>
-        {/* Add team members here if necessary */}
+        <ul className="team-members">
+          <li>Ojaswa Varshney - Software Engineer</li>
+          <li>Sakshi Varshney - Software Engineer</li>
+        </ul>
       </div>
 
       <div className="user-stories">
@@ -25,13 +31,19 @@ const AboutUs = () => {
           <p>
             "Thanks to InterviewWhiz, I landed a job at my dream company. The personalized feedback and interview preparation resources were invaluable!"
           </p>
-          <p className="story-author">- John Doe</p>
+          <p className="story-author">- Nilesh Agrawal</p>
+        </div>
+        <div className="story">
+          <p>
+            "InterviewWhiz helped me brush up on my technical skills and boost my confidence. I got multiple job offers after using the platform!"
+          </p>
+          <p className="story-author">- Adarsh Singh</p>
         </div>
         {/* Add more user stories here if needed */}
       </div>
 
       <div className="call-to-action">
-        <a href="#" className="cta-button">
+        <a href="/register" className="cta-button">
           Start Your Journey with InterviewWhiz
         </a>
         <p>

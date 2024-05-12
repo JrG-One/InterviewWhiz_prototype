@@ -14,6 +14,7 @@ const InterviewPortal = () => {
     role: '',
     experience: '', 
     language: '',
+    codingRound: false,
   });
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -38,6 +39,7 @@ const InterviewPortal = () => {
       role: userData.role,
       experience: userData.experience,
       language: userData.language,
+      codingRound: userData.codingRound, 
     });
     localStorage.setItem('userData', JSON.stringify(userData));  
     console.log('User data:', userData);
@@ -125,10 +127,25 @@ const InterviewPortal = () => {
                   />
                 </div>
               )}
-              {step !== 5 && (
+              {step === 6 && (
+                <div>
+                <input
+                  type="checkbox"
+                  id="codingRound"
+                  name="codingRound"
+                  className="checkbox-input"
+                  checked={userData.codingRound}
+                  onChange={handleChange}
+                />
+                <label className="checkbox-label" htmlFor="codingRound">
+                  if coding round then tick otherwise submit!
+                </label>
+              </div>
+              )}
+              {step !== 6 && (
                 <button type="button" onClick={handleNextStep}>Next</button>
               )}
-              {step === 5 && <button type="submit">Submit</button>}
+              {step === 6 && <button type="submit">Submit</button>}
             </form>
           </div>
         ) : (

@@ -17,6 +17,7 @@ const InterviewPage = ({
   role,
   experience,
   preferredLanguage,
+  isCoding,
 }) => {
   const navigate = useNavigate();
   const [finalPDFData, setFinalPDFData] = useState([]);
@@ -54,7 +55,7 @@ const InterviewPage = ({
             targetCompany,
             experience,
             role,
-            true,
+            isCoding,
             preferredLanguage
           )
             .then((generatedQuestion) => {
@@ -166,8 +167,7 @@ const InterviewPage = ({
       targetCompany,
       experience,
       role,
-      true,
-      preferredLanguage
+      preferredLanguage,isCoding
     ).then((generatedQuestion) => {
       setQuestion(generatedQuestion);
     });

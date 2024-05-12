@@ -1,36 +1,53 @@
-/* Adjust font family, colors, and spacing */
+/* AboutUs.css */
+
 .about-us {
   padding: 20px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
+  font-family: 'Times New Roman', Times, serif;
+  background: linear-gradient(to right, #1a1a1a, #000033)
 }
 
 .section-intro h1 {
-  font-size: 36px;
-  color: #333;
+  font-size: 50px;
+  color: #61dafb;
   margin-bottom: 20px;
 }
 
 .section-intro p {
-  font-size: 18px;
+  font-size: 25px;
   line-height: 1.5;
   margin-bottom: 30px;
+  color: #d3e2e6;
 }
 
 .team-introduction h3 {
-  font-size: 28px;
-  color: #333;
+  font-size: 42px;
+  color: #61dafb;
   margin-bottom: 20px;
 }
 
 .team-introduction p {
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1.5;
   margin-bottom: 30px;
+  color: #d3e2e6;
+}
+
+.team-members {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-members li {
+  font-size: 25px;
+  color: #d3e2e6;
+  margin-bottom: 10px;
 }
 
 .user-stories h3 {
-  font-size: 24px;
-  color: #333;
+  font-size: 42px;
+  color: #61dafb;
   margin-bottom: 20px;
 }
 
@@ -41,15 +58,15 @@
 }
 
 .story p {
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1.5;
-  color: #333;
+  color: #d3e2e6;
 }
 
 .story-author {
   font-style: italic;
   margin-top: 5px;
-  color: #666;
+  color: #61dafb;
 }
 
 .call-to-action {
@@ -58,22 +75,26 @@
 }
 
 .cta-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  display: inline-block;
+    margin: 0 10px;
+    font-size: 30px;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #0e355e;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .cta-button:hover {
-  background-color: #0056b3;
+  transform: scale(1.1);
+    background-color: none;
 }
 
 .call-to-action p {
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1.5;
   margin-top: 10px;
-  color: #333;
+  color: #fff;
 }
