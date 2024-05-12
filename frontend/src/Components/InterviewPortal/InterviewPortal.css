@@ -3,91 +3,74 @@
 .interview-portal {
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   padding: 20px;
   height: 100vh;
   flex-direction: column;
-
 }
 
 .interview-heading {
   font-size: 50px;
-  font-weight: bold; 
+  font-weight: bold;
   color: #282c34;
   text-align: center;
   margin-bottom: 20px;
-  
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 2px;
 }
 
-
-.left-section{
-  width: 48%;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  justify-content: center;
-  margin-left: 580px;
-}
-
-.interview-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-self: center;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 30px;
-  cursor: pointer;
-  background-color: #0e355e;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #729fcd;
-}
-
 .form-container {
-  background-color: #f8f9fa;
-  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left-section {
+  width: 50%;
+}
+
+.left-section img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.right-section {
+  width: 40%;
+  height: 60%;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 800px;
+  padding: 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.form-container h2 {
-  margin-bottom: 20px;
-  font-size: 24px;
+.right-section h2 {
+  margin-bottom: 50px;
+  font-size: 48px;
   color: #0e355e;
 }
 
-.form-container label {
+.right-section label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   font-weight: bold;
   color: #0e355e;
+  font-size: 30px;
 }
 
-.form-container input[type="text"],
-.form-container select {
+.right-section input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 8px;
+  margin-bottom: 50px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 30px;
 }
 
-.form-container button {
-  display: block;
+.right-section button {
   width: 100%;
   padding: 10px;
   background-color: #0e355e;
@@ -96,9 +79,10 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 28px;
 }
 
-.form-container button:hover {
+.right-section button:hover {
   background-color: #729fcd;
 }
 

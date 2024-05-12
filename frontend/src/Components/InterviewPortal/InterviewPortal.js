@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './InterviewPortal.css';
+import Lottie from 'react-lottie';
+import animationData from './animation.json';
 
 const InterviewPortal = () => {
   const [step, setStep] = useState(1);
@@ -41,7 +43,6 @@ const InterviewPortal = () => {
     console.log('User data:', userData);
     setFormSubmitted(true);
     setTimeout(() => {
-
       navigate('/prompt');
     }, 3000);
   };
@@ -49,15 +50,24 @@ const InterviewPortal = () => {
   return (
     <div className="interview-portal">
       {!formSubmitted && (
-      <h1 className="interview-heading">Add your Details and get the magic of AI</h1>
+        <h1 className="interview-heading">Add your Details and get the magic of AI</h1>
       )}
-      <div className={formSubmitted ? "prompt-section" : "left-section"}>
-        {formSubmitted ? (
-          <div className="form-submitted">
-            <h1 className="interview-heading">Wait for the magic...</h1>
+      <div className={formSubmitted ? "prompt-section" : "form-container"}>
+        {!formSubmitted && (
+          <div className="left-section">
+           <Lottie
+              options={{
+                loop: true,
+                autoplay: true,
+                animationData: animationData,
+              }}
+              height={970} // Adjust height as needed
+              width={1000} // Adjust width as needed
+            />
           </div>
-        ) : (
-          <div className="form-container">
+        )}
+        {!formSubmitted ? (
+          <div className="right-section">
             <h2>Interview Information</h2>
             <form onSubmit={handleSubmit}>
               {step === 1 && (
@@ -120,6 +130,10 @@ const InterviewPortal = () => {
               )}
               {step === 5 && <button type="submit">Submit</button>}
             </form>
+          </div>
+        ) : (
+          <div className="form-submitted">
+            <h1 className="interview-heading">Wait for the magic...</h1>
           </div>
         )}
       </div>

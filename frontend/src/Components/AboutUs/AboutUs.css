@@ -1,108 +1,79 @@
-
-body {
-  font-family: Arial, sans-serif; /* Set a base font family */
-  margin: 0; /* Remove default margins */
-  padding: 0; /* Remove default padding */
-}
-
+/* Adjust font family, colors, and spacing */
 .about-us {
-  padding: 20px; /* Adjust padding as needed */
-  background-color: #f5f5f5; /* Light gray background */
+  padding: 20px;
+  background-color: #f9f9f9;
 }
-
-.section-title {
-  font-size: 24px;
-  color: #333; /* Adjust font size and color as desired */
-  font-weight: bold; /* Add boldness for emphasis */
-  margin-bottom: 20px; /* Add spacing after title */
-  text-align: center; /* Center headings by default */
-}
-
-/* Content Sections */
-
 
 .section-intro h1 {
-  font-size: 36px; /* Adjust heading size */
-  color: #333; /* Adjust color */
-  margin-bottom: 20px; /* Add spacing after title */
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .section-intro p {
-  font-size: 18px; /* Adjust paragraph size */
-  line-height: 1.5; /* Adjust line spacing */
-  margin-bottom: 30px; /* Add spacing after paragraph */
-}
-
-.team-introduction {
-  margin-top: 40px; /* Adjust margin */
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 30px;
 }
 
 .team-introduction h3 {
-  font-size: 28px; /* Adjust heading size */
-  color: #333; /* Adjust color */
-  margin-bottom: 20px; /* Add spacing after title */
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .team-introduction p {
-  font-size: 16px; /* Adjust paragraph size */
-  line-height: 1.5; /* Adjust line spacing */
-  margin-bottom: 30px; /* Add spacing after paragraph */
-}
-
-/* User Stories Section */
-
-.user-stories {
-  margin-top: 40px; /* Adjust margin */
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 30px;
 }
 
 .user-stories h3 {
-  font-size: 24px; /* Adjust heading size */
-  color: #333; /* Adjust color */
-  margin-bottom: 20px; /* Add spacing after title */
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .story {
-  margin-bottom: 20px; /* Add spacing between stories */
-  border-bottom: 1px solid #ddd; /* Add subtle border for separation */
-  padding-bottom: 15px; /* Add padding within stories */
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
 }
 
 .story p {
-  font-size: 16px; /* Adjust paragraph size */
-  line-height: 1.5; /* Adjust line spacing */
-  color: #333; /* Adjust text color */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
 }
 
 .story-author {
-  font-style: italic; /* Italicize author names */
-  margin-top: 5px; /* Add spacing after quote */
-  color: #666; /* Adjust author name color */
+  font-style: italic;
+  margin-top: 5px;
+  color: #666;
 }
 
-/* Call to Action Section */
-
 .call-to-action {
-  text-align: center; /* Center call to action */
-  margin-top: 40px; /* Adjust margin */
+  text-align: center;
+  margin-top: 40px;
 }
 
 .cta-button {
-  background-color: #007bff; /* Example blue color */
-  color: #fff; /* White text */
-  padding: 10px 20px; /* Adjust padding */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Make it look clickable */
-  transition: background-color 0.3s ease-in-out; /* Smooth hover effect */
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .cta-button:hover {
-  background-color: #0062cc; /* Darken on hover */
+  background-color: #0056b3;
 }
 
 .call-to-action p {
-  font-size: 16px; /* Adjust paragraph size */
-  line-height: 1.5; /* Adjust line spacing */
-  margin-top: 10px; /* Add spacing after button */
-  color: #333; /* Adjust text color */
+  font-size: 16px;
+  line-height: 1.5;
+  margin-top: 10px;
+  color: #333;
 }

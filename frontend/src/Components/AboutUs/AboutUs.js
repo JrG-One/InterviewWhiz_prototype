@@ -5,50 +5,37 @@ const AboutUs = () => {
   return (
     <div className="about-us">
       <div className="section-intro">
-        <h1>Empowering Your Tech Career Journeys (Replace with your website title)</h1>
+        <h1>Welcome to InterviewWhiz</h1>
         <p>
-          (Replace this with a concise description of your website and value
-          proposition. Highlight what makes your platform unique and the benefits
-          users can expect.)
+          InterviewWhiz is your go-to platform for mastering technical interviews and advancing your tech career. Our AI-driven tools provide personalized feedback and resources to help you succeed.
         </p>
       </div>
 
-      {/* (Optional) Team Introduction */}
       <div className="team-introduction">
-        <h3>Meet Our Experts (Optional - Replace with appropriate heading)</h3>
+        <h3>Meet Our Experts</h3>
         <p>
-          (Optional - Describe your team's expertise and how they can help
-          users. Consider including brief bios or descriptions for key team
-          members.)
+          Our team consists of experienced professionals dedicated to helping you excel in interviews. With backgrounds in software engineering, data science, and more, we're here to support your journey.
         </p>
-        <ul className="team-members">
-          {/* Add list items for team members here (optional) */}
-        </ul>
+        {/* Add team members here if necessary */}
       </div>
 
-      {/* User Stories */}
       <div className="user-stories">
-        <h3>Success Stories (Replace with appropriate heading)</h3>
+        <h3>Success Stories</h3>
         <div className="story">
           <p>
-            "Since using (your platform's name), I've landed my dream job at a
-            top tech company. The AI feedback and personalized coaching were
-            invaluable!" (Replace with a user testimonial)
+            "Thanks to InterviewWhiz, I landed a job at my dream company. The personalized feedback and interview preparation resources were invaluable!"
           </p>
-          <p className="story-author">-(Name of the user)</p>
+          <p className="story-author">- John Doe</p>
         </div>
-        {/* Add more user stories here */}
+        {/* Add more user stories here if needed */}
       </div>
 
-      {/* Call to Action */}
       <div className="call-to-action">
         <a href="#" className="cta-button">
-          Unlock Your Interview Potential Today! (Replace with clear call to action)
+          Start Your Journey with InterviewWhiz
         </a>
         <p>
-          (Optional - Add a brief description to further incentivize users to
-          take the action, e.g., "Sign up for a free trial and experience the
-          difference.")
+          Sign up for free today and unlock your interview potential with InterviewWhiz's comprehensive tools and resources.
         </p>
       </div>
     </div>
