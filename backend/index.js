@@ -1,20 +1,16 @@
 // server.js or index.js
 const express = require('express');
-const bodyParser = require('body-parser'); // If you're using body-parser middleware
-const cors = require('cors'); // Import CORS middleware
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const connectDB = require('./db');
-const authRoutes = require('./authRoutes'); // Import your auth routes
+const authRoutes = require('./authRoutes');
 
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: '*', // Allow requests from any origin
-  methods: ['GET', 'POST', 'DELETE'], // Add other methods if needed
-  allowedHeaders: ['Content-Type', 'Authorization'], // Add other headers if needed
-}));
-app.use(bodyParser.json()); // Use body-parser middleware if needed
-app.use('/api', authRoutes); // Mount the auth routes under the /api path
+app.use(cors()); // Allow requests from any origin
+app.use(bodyParser.json()); 
+app.use('/api', authRoutes); 
 
 // Connect to MongoDB Atlas
 connectDB();
