@@ -8,7 +8,7 @@ const authRoutes = require('./authRoutes');
 const app = express();
 
 // Middleware
-app.use(cors()); // Allow requests from any origin
+// app.use(cors()); // Allow requests from any origin
 app.use(bodyParser.json()); 
 app.use('/api', authRoutes); 
 
