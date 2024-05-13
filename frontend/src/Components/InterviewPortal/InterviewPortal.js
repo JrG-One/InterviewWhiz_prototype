@@ -64,7 +64,7 @@ const InterviewPortal = () => {
                 animationData: animationData,
               }}
               height={970} // Adjust height as needed
-              width={1000} // Adjust width as needed
+              width={800} // Adjust width as needed
             />
           </div>
         )}
