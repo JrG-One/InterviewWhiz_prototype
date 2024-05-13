@@ -7,7 +7,7 @@ const authRoutes = require('./authRoutes');
 
 const app = express();
 app.use(cors());
-app.options('/api', cors())
+app.options('*', cors())
 app.use(bodyParser.json()); 
 app.use('/api', authRoutes); 
 
