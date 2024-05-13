@@ -77,10 +77,14 @@ const InterviewPage = ({
     const timer = setInterval(() => {
       setTimeLeft((prevTimeLeft) => prevTimeLeft - 1);
     }, 1000); // Change interval to 1 second
-
-    // Clean up timer on component unmount
-    return () => clearInterval(timer);
-  }, []);
+  
+    return () => {
+      clearInterval(timer);
+      if (timeLeft === 0) {
+        handleEndButton();
+      }
+    };
+  }, [timeLeft]);
 
   const generateRandomQuestions = async (
     targetCompany,
@@ -135,7 +139,7 @@ const InterviewPage = ({
         .toString()
         .split("\n")
         .map((line, index) => <p key={index}>{line}</p>);
-      setFinalPDFData((prevData) => [...prevData, " ", " ", ...forPDFQuestion]); // Append to finalPDFData
+      setFinalPDFData((prevData) => [...prevData, " ", " ", ...forPDFQuestion]); 
 
       return formattedquestion;
     } catch (error) {
@@ -151,7 +155,7 @@ const InterviewPage = ({
       feedbackSectionRef.current.scrollIntoView({ behavior: "smooth" });
     }
     try {
-      setIsLoading(true); // Set isLoading to true when the submission starts
+      setIsLoading(true); 
       const feedback = await generateFeedback(question, answer);
       setFeedback(feedback);
     } catch (error) {
