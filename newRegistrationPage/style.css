@@ -1,0 +1,95 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    width: 100%;
+    line-height: 3rem;
+}
+
+.navbar-brand{
+    margin-left: 3rem;
+    margin-right: 35rem;
+}
+
+.navbar-brand img{
+    margin: 0 0.5rem 0 0.5rem;
+}
+
+.navbar-nav{
+    gap: 3rem;
+}
+
+.sidebar{
+    background-color: red;
+    width: 30%;
+    border-radius: 1rem;
+    margin-right: 0.3rem;
+    overflow: auto;
+}
+
+.main-content{
+    /* display: flex; */
+    background-color: pink;
+    flex: 1;
+    border-radius: 1rem;
+    overflow: auto;
+}
+
+.main-container{
+    display: flex;
+    height: 85vh;
+}
+
+.add-jobs{
+    float: right;
+    margin: 1.5rem;
+    padding: 1rem;
+}
+
+.card-container{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: rebeccapurple;
+}
+
+.sidemenu{
+    position: relative;
+    right: 0;
+}
+
+.card-body{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.delete{
+    margin: 1rem;
+}
+
+.card-main-body{
+    width: 80%;
+}
+
+.card-container{
+    border-radius: 1rem;
+}
+
+.filters{
+    background-color: orange;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.sidebar h1{
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
